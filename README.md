@@ -63,6 +63,23 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 本项目采用 MIT 许可证 - 详情请参阅 [LICENSE](LICENSE) 文件。
 
+## 🎯 Featured Examples 特色示例
+
+This repository includes comprehensive implementations of popular algorithms and data structures:
+
+### ✅ Completed Implementations 已完成的实现
+
+- **Bubble Sort** - Complete with Python (12 tests), Java, JavaScript (21 tests)
+- **Binary Search** - Complete with Python, JavaScript, C++ implementations
+- **Stack Data Structure** - Complete with Python implementation including MinStack and applications
+
+Each implementation includes:
+- 📖 Bilingual documentation (English/Chinese)
+- 🧪 Comprehensive test suites
+- 📊 Time and space complexity analysis
+- 🎯 Real-world applications and examples
+- 🔍 Step-by-step visualizations
+
 ## 🌟 Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=greatbody/algorithm&type=Date)](https://star-history.com/#greatbody/algorithm&Date)
