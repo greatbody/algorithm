@@ -42,8 +42,21 @@
 - [Python](implementations/python/binary_search.py)
 - [Java](implementations/java/BinarySearch.java)
 - [JavaScript](implementations/javascript/binarySearch.js)
-- [C++](implementations/cpp/binary_search.cpp)
+- [C++](implementations/cpp/binary_search.cpp) - See [C++ Compilation Guide](../../../../CPP_COMPILATION_GUIDE.md)
 - [Go](implementations/go/binary_search.go)
+
+### Quick Start for C++ 快速开始 (C++)
+```bash
+# Navigate to C++ implementation
+cd implementations/cpp/
+
+# Compile and run
+g++ -std=c++17 -o binary_search binary_search.cpp
+./binary_search
+
+# Or use the provided Makefile
+make run
+```
 
 ## Example Usage 使用示例
 

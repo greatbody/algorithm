@@ -43,6 +43,14 @@ A professionally curated repository featuring comprehensive algorithm descriptio
 - **C++** ⚡ - High-performance implementations with memory management
 - **Go** 🚀 - Concurrent and efficient implementations
 
+## 🔧 Compilation Guides 编译指南
+
+For C++ implementations, see our comprehensive compilation guide:
+- **[C++ Compilation Guide](CPP_COMPILATION_GUIDE.md)** - Complete instructions for compiling C++ algorithms on macOS, Linux, and Windows
+
+对于 C++ 实现，请查看我们的综合编译指南：
+- **[C++ 编译指南](CPP_COMPILATION_GUIDE.md)** - 在 macOS、Linux 和 Windows 上编译 C++ 算法的完整说明
+
 ## 🤝 Contributing 贡献指南
 
 We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING.md) before submitting pull requests.
