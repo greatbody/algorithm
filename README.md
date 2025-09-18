@@ -25,6 +25,7 @@ A professionally curated repository featuring comprehensive algorithm descriptio
 | Algorithm | Description | Time Complexity | Space Complexity | Implementations |
 |-----------|-------------|-----------------|------------------|-----------------|
 | [Binary Search](algorithms/searching/binary-search/README.md) | Efficient search algorithm for sorted arrays | O(log n) | O(1) | Python, Java, JavaScript, C++, Go |
+| [Knuth-Morris-Pratt (KMP)](algorithms/searching/knuth-morris-pratt/README.md) | Efficient string matching algorithm with failure function | O(n + m) | O(m) | Python, Java, JavaScript, C++ |
 | [Linear Search](algorithms/searching/linear-search/README.md) | Simple search algorithm that checks every element | O(n) | O(1) | Python, Java, JavaScript, C++, Go |
 
 ## 🏗️ Data Structures 数据结构

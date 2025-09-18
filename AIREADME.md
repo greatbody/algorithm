@@ -104,7 +104,7 @@ algorithm/
 
 ### 🔄 Repository Categories
 - **`algorithms/sorting/`** - Sorting algorithms (Bubble Sort implemented)
-- **`algorithms/searching/`** - Search algorithms (Binary Search implemented)
+- **`algorithms/searching/`** - Search algorithms (Binary Search implemented, KMP planned)
 - **`algorithms/data-structures/`** - Data structures (Stack implemented)
 - **`algorithms/templates/`** - Standard templates for consistency
 
@@ -194,7 +194,7 @@ The repository serves as both:
 
 Based on README.md planning, expected additions include:
 - **More Sorting Algorithms:** Quick Sort, Merge Sort
-- **More Search Algorithms:** Linear Search
+- **More Search Algorithms:** Linear Search, Knuth-Morris-Pratt (KMP) String Matching
 - **More Data Structures:** Linked List, Queue
 - **Language Expansion:** Go implementations
 - **Testing Enhancement:** More comprehensive test suites

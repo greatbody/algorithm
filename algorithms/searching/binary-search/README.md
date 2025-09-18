@@ -41,9 +41,19 @@
 ### Available Languages 可用语言
 - [Python](implementations/python/binary_search.py)
 - [Java](implementations/java/BinarySearch.java)
-- [JavaScript](implementations/javascript/binarySearch.js)
+- [TypeScript (Deno)](implementations/javascript/binarySearch.ts)
 - [C++](implementations/cpp/binary_search.cpp) - See [C++ Compilation Guide](../../../../CPP_COMPILATION_GUIDE.md)
 - [Go](implementations/go/binary_search.go)
+### TypeScript (Deno) Example
+```ts
+import { binarySearch } from './implementations/javascript/binarySearch.ts';
+console.log(binarySearch([1,3,5,7,9], 7)); // 3
+```
+
+Run tests (运行测试):
+```
+deno test implementations/javascript
+```
 
 ### Quick Start for C++ 快速开始 (C++)
 ```bash

@@ -37,11 +37,21 @@
 ### Available Languages 可用语言
 - [Python](implementations/python/bubble_sort.py)
 - [Java](implementations/java/BubbleSort.java)
-- [JavaScript](implementations/javascript/bubbleSort.js)
+- [TypeScript (Deno)](implementations/javascript/bubbleSort.ts)
 - [C++](implementations/cpp/bubble_sort.cpp)
 - [Go](implementations/go/bubble_sort.go)
 
 ## Example Usage 使用示例
+### TypeScript (Deno) Example
+```ts
+import { bubbleSort } from './implementations/javascript/bubbleSort.ts';
+console.log(bubbleSort([64,34,25,12,22,11,90]));
+```
+
+Run tests (运行测试):
+```
+deno test implementations/javascript
+```
 
 ### Input Array
 ```
