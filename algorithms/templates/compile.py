@@ -37,6 +37,57 @@ def detect_compilers():
 
     return compilers
 
+def create_output_directories():
+    """Create bin/ and build/ directories if they don't exist"""
+    directories = ['bin', 'build']
+    for directory in directories:
+        Path(directory).mkdir(exist_ok=True)
+        print(f"✓ Created {directory}/ directory")
+
+def detect_file_type(filename):
+    """Detect file type to determine appropriate naming suffix"""
+    name_lower = filename.lower()
+
+    if 'test' in name_lower:
+        return '_test'
+    elif 'demo' in name_lower:
+        return '_demo'
+    elif 'simple' in name_lower:
+        return ''  # simple_ prefix is already in filename
+    else:
+        return '_app'
+
+def get_output_name(source_file, file_type_suffix, executable_ext):
+    """Generate output name following binary naming convention"""
+    stem = source_file.stem
+
+    # Handle simple_ prefix
+    if stem.startswith('simple_'):
+        output_name = f"bin/{stem}{executable_ext}"
+    else:
+        # Apply appropriate suffix
+        output_name = f"bin/{stem}{file_type_suffix}{executable_ext}"
+
+    return output_name
+
+def cleanup_binaries():
+    """Remove all generated binaries from bin/ directory"""
+    bin_dir = Path("bin")
+    if bin_dir.exists():
+        binaries_removed = 0
+        for binary_file in bin_dir.glob("*"):
+            if binary_file.is_file():
+                binary_file.unlink()
+                binaries_removed += 1
+                print(f"✓ Removed {binary_file.name}")
+
+        if binaries_removed > 0:
+            print(f"✓ Cleaned up {binaries_removed} binary file(s) from bin/ directory")
+        else:
+            print("✓ No binaries found in bin/ directory")
+    else:
+        print("✓ bin/ directory does not exist")
+
 def get_platform_flags():
     """Get platform-specific compilation flags"""
     system = platform.system()
@@ -76,10 +127,20 @@ def compile_file(source_file, compiler, flags, output_name):
         return False
 
 def main():
+    # Handle command line arguments
+    if len(sys.argv) > 1 and sys.argv[1] == 'clean':
+        print("Cleaning up generated binaries...")
+        cleanup_binaries()
+        return 0
+
     print("Cross-Platform Algorithm Compiler")
     print("=" * 40)
     print(f"Platform: {platform.system()} {platform.release()}")
     print(f"Python: {sys.version.split()[0]}")
+    print()
+
+    # Create output directories
+    create_output_directories()
     print()
 
     # Detect compilers
@@ -116,7 +177,8 @@ def main():
     for c_file in c_files:
         if compilers['c']:
             total_count += 1
-            output_name = c_file.stem + platform_flags['executable_ext']
+            file_type_suffix = detect_file_type(c_file.name)
+            output_name = get_output_name(c_file, file_type_suffix, platform_flags['executable_ext'])
             if compile_file(str(c_file), compilers['c'], platform_flags['c_flags'], output_name):
                 success_count += 1
         else:
@@ -126,7 +188,8 @@ def main():
     for cpp_file in cpp_files:
         if compilers['cpp']:
             total_count += 1
-            output_name = cpp_file.stem + "_cpp" + platform_flags['executable_ext']
+            file_type_suffix = detect_file_type(cpp_file.name)
+            output_name = get_output_name(cpp_file, file_type_suffix, platform_flags['executable_ext'])
             if compile_file(str(cpp_file), compilers['cpp'], platform_flags['cpp_flags'], output_name):
                 success_count += 1
         else:
@@ -138,9 +201,9 @@ def main():
     if success_count > 0:
         print("\nTo run your programs:")
         if platform.system() == "Windows":
-            print("  .\\program_name.exe")
+            print("  .\\bin\\program_name.exe")
         else:
-            print("  ./program_name")
+            print("  ./bin/program_name")
 
     return 0 if success_count == total_count else 1
 
