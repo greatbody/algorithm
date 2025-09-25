@@ -78,3 +78,43 @@ logs/
 .env.development.local
 .env.test.local
 .env.production.local
+
+# Algorithm Binary Files - Standardized Naming Convention
+# All compiled binaries follow pattern: algorithm_category/algorithm_name/bin/*
+# and algorithm_category/algorithm_name/build/*
+algorithms/*/implementations/*/bin/
+algorithms/*/implementations/*/build/
+algorithms/*/implementations/*/*.out
+algorithms/*/implementations/*/*.exe
+
+# Language-specific binary patterns
+# C/C++ binaries (no extension)
+algorithms/**/implementations/**/simple_*
+algorithms/**/implementations/**/*_test
+algorithms/**/implementations/**/*_demo
+algorithms/**/implementations/**/*_app
+
+# Java binaries
+algorithms/*/implementations/*/*.class
+algorithms/*/implementations/*/*.jar
+
+# Python bytecode
+algorithms/*/implementations/*/__pycache__/
+algorithms/*/implementations/*/*.pyc
+algorithms/*/implementations/*/*.pyo
+
+# TypeScript/JavaScript
+algorithms/*/implementations/*/dist/
+algorithms/*/implementations/*/node_modules/
+algorithms/*/implementations/*/*.js
+algorithms/*/implementations/*/*.map
+
+# CMake build directories
+algorithms/*/implementations/*/CMakeFiles/
+algorithms/*/implementations/*/cmake_install.cmake
+algorithms/*/implementations/*/CMakeCache.txt
+algorithms/*/implementations/*/Makefile
+
+# Backup files
+algorithms/*/implementations/*/*~
+algorithms/*/implementations/*/*.bak
