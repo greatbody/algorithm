@@ -6,14 +6,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
-#define MAX_STACK_SIZE 100
-
-// Simple stack structure
-typedef struct {
-    int items[MAX_STACK_SIZE];
-    int top;
-} SimpleStack;
+#include "stack.h"
 
 // Initialize stack
 void stackInit(SimpleStack* stack) {
@@ -55,38 +48,4 @@ int stackPeek(SimpleStack* stack) {
         return -1;
     }
     return stack->items[stack->top];
-}
-
-// Simple test function
-void testStack() {
-    printf("Testing Simple Stack\n");
-    printf("===================\n");
-
-    SimpleStack stack;
-    stackInit(&stack);
-
-    printf("Pushing elements: 10, 20, 30\n");
-    stackPush(&stack, 10);
-    stackPush(&stack, 20);
-    stackPush(&stack, 30);
-
-    printf("Top element: %d\n", stackPeek(&stack));
-
-    printf("Popping elements:\n");
-    while (!stackIsEmpty(&stack)) {
-        printf("Popped: %d\n", stackPop(&stack));
-    }
-
-    printf("\n");
-}
-
-// Main function
-int main() {
-    printf("Simple Stack Implementation\n");
-    printf("==========================\n\n");
-
-    testStack();
-
-    printf("Test completed!\n");
-    return 0;
 }
