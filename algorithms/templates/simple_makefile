@@ -1,0 +1,84 @@
+# Simple Cross-Platform Makefile
+# Works on macOS, Linux, and Windows (with MinGW)
+
+# Detect operating system
+ifeq ($(OS),Windows_NT)
+    # Windows settings
+    DETECTED_OS := Windows
+    EXECUTABLE_EXTENSION := .exe
+    CLEAN_COMMAND := del /Q
+    MKDIR_COMMAND := mkdir
+else
+    # Unix-like systems (macOS, Linux)
+    DETECTED_OS := $(shell uname -s)
+    EXECUTABLE_EXTENSION :=
+    CLEAN_COMMAND := rm -f
+    MKDIR_COMMAND := mkdir -p
+endif
+
+# Compiler settings
+CC := gcc
+CXX := g++
+CFLAGS := -std=c99 -Wall -Wextra -O2
+CXXFLAGS := -std=c++17 -Wall -Wextra -O2
+
+# Default targets
+C_TARGET := algorithm$(EXECUTABLE_EXTENSION)
+CPP_TARGET := algorithm_cpp$(EXECUTABLE_EXTENSION)
+
+# Source files (modify these for your specific algorithm)
+C_SOURCE := algorithm.c
+CPP_SOURCE := algorithm.cpp
+
+# Build rules
+all: c cpp
+
+c: $(C_TARGET)
+
+cpp: $(CPP_TARGET)
+
+$(C_TARGET): $(C_SOURCE)
+	$(CC) $(CFLAGS) -o $@ $<
+
+$(CPP_TARGET): $(CPP_SOURCE)
+	$(CXX) $(CXXFLAGS) -o $@ $<
+
+# Run targets
+run-c: $(C_TARGET)
+	./$(C_TARGET)
+
+run-cpp: $(CPP_TARGET)
+	./$(CPP_TARGET)
+
+run: run-c
+
+# Clean
+clean:
+ifeq ($(DETECTED_OS),Windows)
+	$(CLEAN_COMMAND) $(C_TARGET) $(CPP_TARGET)
+else
+	$(CLEAN_COMMAND) $(C_TARGET) $(CPP_TARGET)
+endif
+
+# Help
+help:
+	@echo "Simple Cross-Platform Build System"
+	@echo "=================================="
+	@echo "Detected OS: $(DETECTED_OS)"
+	@echo ""
+	@echo "Available targets:"
+	@echo "  all      - Build both C and C++ versions"
+	@echo "  c        - Build C version only"
+	@echo "  cpp      - Build C++ version only"
+	@echo "  run      - Build and run C version"
+	@echo "  run-c    - Build and run C version"
+	@echo "  run-cpp  - Build and run C++ version"
+	@echo "  clean    - Remove built executables"
+	@echo "  help     - Show this help message"
+	@echo ""
+	@echo "Usage:"
+	@echo "  make              # Build everything"
+	@echo "  make run          # Build and run C version"
+	@echo "  make clean && make # Clean rebuild"
+
+.PHONY: all c cpp run run-c run-cpp clean help
