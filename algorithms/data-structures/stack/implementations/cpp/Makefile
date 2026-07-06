@@ -1,0 +1,132 @@
+# Makefile for Stack Implementation in C++
+# Cross-platform makefile for macOS, Linux, and Windows
+
+# =============================================================================
+# PLATFORM DETECTION AND CONFIGURATION
+# =============================================================================
+
+# Detect operating system
+UNAME_S := $(shell uname -s)
+UNAME_M := $(shell uname -m)
+
+# Platform-specific configurations
+ifeq ($(UNAME_S),Linux)
+    # Linux configuration
+    CC := gcc
+    CXX := g++
+    RM := rm -rf
+    MKDIR := mkdir -p
+    EXECUTABLE_EXT :=
+    SHELL := /bin/bash
+endif
+
+ifeq ($(UNAME_S),Darwin)
+    # macOS configuration
+    CC := clang
+    CXX := clang++
+    RM := rm -rf
+    MKDIR := mkdir -p
+    EXECUTABLE_EXT :=
+    SHELL := /bin/bash
+endif
+
+ifeq ($(OS),Windows_NT)
+    # Windows configuration (requires Git Bash, WSL, or Cygwin)
+    CC := gcc
+    CXX := g++
+    RM := rm -rf
+    MKDIR := mkdir -p
+    EXECUTABLE_EXT := .exe
+    SHELL := /bin/bash
+endif
+
+# =============================================================================
+# COMPILER SETTINGS
+# =============================================================================
+
+# Common compiler flags
+CFLAGS := -std=c99 -Wall -Wextra -g -I.
+CXXFLAGS := -std=c++17 -Wall -Wextra -g -I.
+RELEASE_FLAGS := -O2 -DNDEBUG
+
+# =============================================================================
+# PROJECT STRUCTURE
+# =============================================================================
+
+# Directories
+SRC_DIR := .
+BUILD_DIR := build
+TARGET_DIR := bin
+
+# Source files
+SOURCES := stack.cpp test_stack.cpp
+TARGET := stack_test$(EXECUTABLE_EXT)
+
+# Object files
+OBJECTS := $(SOURCES:%.cpp=$(BUILD_DIR)/%.o)
+
+# =============================================================================
+# BUILD TARGETS
+# =============================================================================
+
+# Default target - build everything
+all: $(TARGET_DIR)/$(TARGET)
+
+# Create necessary directories
+$(BUILD_DIR):
+	$(MKDIR) $(BUILD_DIR)
+
+$(TARGET_DIR):
+	$(MKDIR) $(TARGET_DIR)
+
+# Compile object files
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp | $(BUILD_DIR)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# Link executable
+$(TARGET_DIR)/$(TARGET): $(OBJECTS) | $(TARGET_DIR)
+	$(CXX) $(OBJECTS) -o $@
+
+# =============================================================================
+# DEVELOPMENT TARGETS
+# =============================================================================
+
+# Build and run tests
+test: $(TARGET_DIR)/$(TARGET)
+	./$(TARGET_DIR)/$(TARGET)
+
+# Build and run (alias for test)
+run: test
+
+# Release build
+release: CXXFLAGS += $(RELEASE_FLAGS)
+release: clean $(TARGET_DIR)/$(TARGET)
+
+# Debug build with sanitizers
+debug: CXXFLAGS += -fsanitize=address -fsanitize=undefined
+debug: clean $(TARGET_DIR)/$(TARGET)
+
+# Clean build artifacts
+clean:
+	$(RM) $(BUILD_DIR) $(TARGET_DIR)
+
+# =============================================================================
+# HELPER TARGETS
+# =============================================================================
+
+# Show help information
+help:
+	@echo "Available targets:"
+	@echo "  all     - Build the executable (default)"
+	@echo "  test    - Build and run tests"
+	@echo "  run     - Same as test"
+	@echo "  release - Build optimized version"
+	@echo "  debug   - Build with debug sanitizers"
+	@echo "  clean   - Remove build artifacts"
+	@echo "  help    - Show this help"
+
+# =============================================================================
+# PHONY TARGETS
+# =============================================================================
+
+.PHONY: all test run release debug clean help
