@@ -44,13 +44,51 @@ A professionally curated repository featuring comprehensive algorithm descriptio
 - **C++** ⚡ - High-performance implementations with memory management
 - **Go** 🚀 - Concurrent and efficient implementations
 
-## 🔧 Compilation Guides 编译指南
+## 🔧 Build System & Compilation 构建系统和编译指南
 
-For C++ implementations, see our comprehensive compilation guide:
-- **[C++ Compilation Guide](CPP_COMPILATION_GUIDE.md)** - Complete instructions for compiling C++ algorithms on macOS, Linux, and Windows
+### Cross-Platform Makefile System
 
-对于 C++ 实现，请查看我们的综合编译指南：
-- **[C++ 编译指南](CPP_COMPILATION_GUIDE.md)** - 在 macOS、Linux 和 Windows 上编译 C++ 算法的完整说明
+This repository uses a standardized cross-platform Makefile system for easy compilation of C and C++ implementations.
+
+**Quick Start:**
+```bash
+# Navigate to any algorithm implementation directory
+cd algorithms/sorting/bubble-sort/implementations/c
+
+# Build and run tests
+make test
+
+# Or simply build
+make
+```
+
+### 📚 Build System Documentation
+
+- **[Makefile Installation Guide](MAKEFILE_INSTALLATION_GUIDE.md)** - How to install Make on macOS, Windows, and Linux
+- **[Makefile Template Guide](MAKEFILE_GUIDE.md)** - Standard template for creating cross-platform Makefiles
+- **[C++ Compilation Guide](CPP_COMPILATION_GUIDE.md)** - Additional C++-specific compilation instructions
+
+### 跨平台构建系统
+
+本代码库使用标准化的跨平台 Makefile 系统，便于编译 C 和 C++ 实现。
+
+**快速开始:**
+```bash
+# 进入任意算法实现目录
+cd algorithms/sorting/bubble-sort/implementations/c
+
+# 构建并运行测试
+make test
+
+# 或仅构建
+make
+```
+
+### 📚 构建系统文档
+
+- **[Makefile 安装指南](MAKEFILE_INSTALLATION_GUIDE.md)** - 在 macOS、Windows 和 Linux 上安装 Make 的方法
+- **[Makefile 模板指南](MAKEFILE_GUIDE.md)** - 创建跨平台 Makefile 的标准模板
+- **[C++ 编译指南](CPP_COMPILATION_GUIDE.md)** - 额外的 C++ 特定编译说明
 
 ## 🤝 Contributing 贡献指南
 
