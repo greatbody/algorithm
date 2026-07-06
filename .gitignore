@@ -87,34 +87,5 @@ algorithms/*/implementations/*/build/
 algorithms/*/implementations/*/*.out
 algorithms/*/implementations/*/*.exe
 
-# Language-specific binary patterns
-# C/C++ binaries (no extension)
-algorithms/**/implementations/**/simple_*
-algorithms/**/implementations/**/*_test
-algorithms/**/implementations/**/*_demo
-algorithms/**/implementations/**/*_app
-
-# Java binaries
-algorithms/*/implementations/*/*.class
-algorithms/*/implementations/*/*.jar
-
-# Python bytecode
-algorithms/*/implementations/*/__pycache__/
-algorithms/*/implementations/*/*.pyc
-algorithms/*/implementations/*/*.pyo
-
-# TypeScript/JavaScript
-algorithms/*/implementations/*/dist/
-algorithms/*/implementations/*/node_modules/
-algorithms/*/implementations/*/*.js
-algorithms/*/implementations/*/*.map
-
-# CMake build directories
-algorithms/*/implementations/*/CMakeFiles/
-algorithms/*/implementations/*/cmake_install.cmake
-algorithms/*/implementations/*/CMakeCache.txt
-algorithms/*/implementations/*/Makefile
-
-# Backup files
-algorithms/*/implementations/*/*~
-algorithms/*/implementations/*/*.bak
+# Tool-generated config directories
+.ts/
